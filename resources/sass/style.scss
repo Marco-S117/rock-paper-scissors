@@ -12,5 +12,12 @@ body {
                 opacity: 1;
             }
         }
+
+        .mjs_botChoice {
+            opacity: 0.2;
+            &:hover {
+                cursor: not-allowed; 
+            }
+        }
     }
 }
