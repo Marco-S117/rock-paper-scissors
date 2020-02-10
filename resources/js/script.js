@@ -3,7 +3,7 @@ $(document).ready(init);
 function init() {
 
     // All variables
-    var uChoice, winner;
+    var uChoice, userScore = 0, botScore = 0;
 
     // Hide result column
     $('#mjs_resultOutput').hide();
@@ -79,7 +79,11 @@ function init() {
             case "pr":
             case "sp":
                 console.log("User win", uChoice, "beats", bChoice);
-                addPointToUser();
+                userScore++;
+                $('#mjs_uPointsCounter').delay(250).fadeIn(350).append().html(userScore);
+                console.log();                
+                console.log("User points:" + userScore);
+                console.log("Bot points" + botScore);
                 return "User";
                 break;
             // Bot win
@@ -87,18 +91,24 @@ function init() {
             case "ps":
             case "sr":
                 console.log("Bot win", bChoice, "beats", uChoice);
-                addPointToBot();
+                botScore++;
+                $('#mjs_bPointsCounter').delay(250).fadeIn(350).append().html(botScore);
+                console.log();                
+                console.log("User points:" + userScore);
+                console.log("Bot points" + botScore);
                 return "Bot";
                 break;
             // Draws
-            // Bot win
             case "rr":
             case "pp":
             case "ss":
                 console.log("It's a draw. User:", uChoice, "bot:", bChoice);
+                console.log();                
+                console.log("User points:" + userScore);
+                console.log("Bot points" + botScore);
                 return "draw";
                 break;
-        }
+        }        
     }
 
     // Print the winner in page
@@ -106,18 +116,6 @@ function init() {
         var output;
         if (result === "draw" ? output = "It's a draw!" : output = result + " win!");
         $('#mjs_resultOutput').delay(250).fadeIn(350).append().html(output);
-    }
-
-    // Print points
-    function addPointToUser() {
-        var userScore = 0;
-        userScore++;
-        $('#mjs_uPointsCounter').delay(250).fadeIn(350).append().html(userScore);
-    }
-    function addPointToBot() {
-        var botUser = 0;
-        botUser++;
-        $('#mjs_bPointsCounter').delay(250).fadeIn(350).append().html(botUser);
     }
 
 }
