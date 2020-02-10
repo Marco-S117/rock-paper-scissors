@@ -25,7 +25,7 @@ function init() {
             console.clear();
             console.log("user choiced:", uChoice);
             console.log("bot choiced:", bChoice);
-            showChoices(uChoice, bChoice);
+            choiceHighlight(uChoice, bChoice);
             result = showWinner(uChoice, bChoice);
             printResult(result);
         }
@@ -66,9 +66,14 @@ function init() {
     }
 
     // Show user and bot choice
-    function showChoices(uChoice, bChoice) {
+    function choiceHighlight(uChoice, bChoice) {
         $("i[choice|='" + uChoice + "']").removeClass('ms_choice');
         $("i[b-choice|='" + bChoice + "']").removeClass('mjs_botChoice');
+        setTimeout(function() {
+            $("i[choice|='" + uChoice + "']").addClass('ms_choice');
+            $("i[b-choice|='" + bChoice + "']").addClass('mjs_botChoice');
+            $('#mjs_resultOutput').fadeOut(350);
+        }, 1250);
     }
 
     // Show the winner of the match
