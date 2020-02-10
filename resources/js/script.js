@@ -3,7 +3,13 @@ $(document).ready(init);
 function init() {
 
     // All variables
-    var uChoice;
+    var uChoice, winner;
+
+    // Hide result column
+    $('#mjs_resultOutput').hide();
+
+    // Hide another choice button
+    $('#mjs_anotherChoice').hide();
     
     // Hide invite to play message
     $('#mjs_gameStarted').hide();
@@ -20,11 +26,12 @@ function init() {
             console.log("user choiced:", uChoice);
             console.log("bot choiced:", bChoice);
             showChoices(uChoice, bChoice);
+            result = showWinner(uChoice, bChoice);
+            printResult(result);
         }
     );
 
-    // TODO: Disable choice
-    
+    // TODO: Play again after a choice
     
     /* * * ALL FUNCTIONS * * */
 
@@ -62,6 +69,55 @@ function init() {
     function showChoices(uChoice, bChoice) {
         $("i[choice|='" + uChoice + "']").removeClass('ms_choice');
         $("i[b-choice|='" + bChoice + "']").removeClass('mjs_botChoice');
+    }
+
+    // Show the winner of the match
+    function showWinner(uChoice, bChoice) {
+        switch (uChoice + bChoice) {
+            // User win
+            case "rs":
+            case "pr":
+            case "sp":
+                console.log("User win", uChoice, "beats", bChoice);
+                addPointToUser();
+                return "User";
+                break;
+            // Bot win
+            case "rp":
+            case "ps":
+            case "sr":
+                console.log("Bot win", bChoice, "beats", uChoice);
+                addPointToBot();
+                return "Bot";
+                break;
+            // Draws
+            // Bot win
+            case "rr":
+            case "pp":
+            case "ss":
+                console.log("It's a draw. User:", uChoice, "bot:", bChoice);
+                return "draw";
+                break;
+        }
+    }
+
+    // Print the winner in page
+    function printResult(result) {
+        var output;
+        if (result === "draw" ? output = "It's a draw!" : output = result + " win!");
+        $('#mjs_resultOutput').delay(250).fadeIn(350).append().html(output);
+    }
+
+    // Print points
+    function addPointToUser() {
+        var userScore = 0;
+        userScore++;
+        $('#mjs_uPointsCounter').delay(250).fadeIn(350).append().html(userScore);
+    }
+    function addPointToBot() {
+        var botUser = 0;
+        botUser++;
+        $('#mjs_bPointsCounter').delay(250).fadeIn(350).append().html(botUser);
     }
 
 }
