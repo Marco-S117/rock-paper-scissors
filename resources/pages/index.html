@@ -13,23 +13,28 @@
         <title>Rock, paper scissors JS minigame | Marco Polino</title>
     </head>
     <body>
-
         <div class="container bg-secondary text-white ms_container">
             <div class="row h-100 d-flex justify-content-center align-items-center">
-                <!-- Start button row -->
+                <!-- Start button column -->
                 <div class="col-sm-12 text-center">
                     <h1>Rock, paper, scissors</h1>
                     <p>A simple minigame made in JS by Marco Polino</p>
                     <button id="mjs_start" class="btn btn-primary">Start game</button>
                 </div>
-                <!-- /Start button row -->                
-                <!-- Choice row -->
+                <!-- /Start button column -->                
+                <!-- Choice column -->
                 <div id="mjs_gameStarted" class="col-sm-12 text-center">
                     <h1>Make your choice!</h1>
                     <p>Select one of the three options</p>
+                    <p id="mjs_resultOutput" class="p-2 m-2 bg-white text-dark"></p>
                     <div class="row mt-5">
                         <div class="col-sm-12 col-md-6">
-                            <h4 class="mb-5">User</h4>
+                            <div class="d-flex justify-content-around">
+                                <h4 class="mb-5">User</h4>
+                                <h4>Points: 
+                                    <span id="mjs_uPointsCounter">0</span>
+                                </h4>
+                            </div>
                             <div class="d-flex justify-content-around">
                                 <i choice="r" class="fas fa-hand-rock display-4 p-4 bg-success rounded-circle ms_choice"></i>
                                 <i choice="p" class="fas fa-hand-paper display-4 p-4 bg-success rounded-circle ms_choice"></i>
@@ -37,7 +42,12 @@
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6">
-                            <h4 class="mb-5">Bot</h4>
+                            <div class="d-flex justify-content-around">
+                                <h4 class="mb-5">Bot</h4>
+                                <h4>Points:
+                                    <span id="mjs_bPointsCounter">0</span>
+                                </h4>
+                            </div>
                             <div class="d-flex justify-content-around">
                                 <i b-choice="r" class="fas fa-hand-rock display-4 p-4 bg-white text-danger rounded-circle mjs_botChoice"></i>
                                 <i b-choice="p" class="fas fa-hand-paper display-4 p-4 bg-white text-danger rounded-circle mjs_botChoice"></i>
@@ -46,20 +56,11 @@
                         </div>
                     </div>
                 </div>
-                <!-- /Choice row -->
+                <!-- /Choice column -->
             </div>
         </div>
-
         <!-- CDN JQUERY 3.3.1 -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <!-- CDN HANDLEBARS -->
-        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-        <!-- TEMPLATE HANDLEBARS -->
-        <script id="template" type="text/x-handlebars-template">
-            <!-- {{nome_variabile_uguale_alle_chiavi_ritornate}} -->
-            Dati tornati: {{author}} - {{genre}} - {{title}} - {{year}} <br>
-            Se li vedi il tutto è collegato correttamente
-        </script>
         <!-- MIO SCRIPT -->
         <script src="assets/js/script.js"></script>
     </body>
