@@ -1,0 +1,57 @@
+body {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  -webkit-animation: gradient 15s ease infinite;
+          animation: gradient 15s ease infinite;
+}
+
+@-webkit-keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+body .ms_container {
+  height: 100vh;
+}
+
+body .ms_container .ms_choice {
+  opacity: 0.2;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+
+body .ms_container .ms_choice:hover {
+  opacity: 1;
+}
+
+body .ms_container .mjs_botChoice {
+  opacity: 0.2;
+}
+
+body .ms_container .mjs_botChoice:hover {
+  cursor: not-allowed;
+}
+
